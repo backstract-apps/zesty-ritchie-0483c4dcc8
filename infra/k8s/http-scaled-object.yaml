@@ -1,0 +1,24 @@
+kind: HTTPScaledObject
+apiVersion: http.keda.sh/v1alpha1
+metadata:
+  name: zesty-ritchie-0483c4dcc8-scaler
+  namespace: apps-release
+spec:
+  hosts:
+    - cc1fbde45ead-in-south-01.mayson.dev
+  pathPrefixes:
+    - /ap-southeast-2-backstractelb-4d7861-coll-de86b77485ea4fb7a472d6ebb81c8a80/ # e.g. /infallible-naveen-... zesty-ritchie-0483c4dcc8/
+  scaleTargetRef:
+    name: zesty-ritchie-0483c4dcc8-depl
+    kind: Deployment
+    apiVersion: apps/v1
+    service: zesty-ritchie-0483c4dcc8-srv # e.g. coll-8a2a...-srv
+    port: 80
+  replicas:
+    min: 0
+    max: 10
+  scaledownPeriod: 120 #inseconds
+  scalingMetric:
+    requestRate:
+      targetValue: 100
+      window: 1m

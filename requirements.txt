@@ -1,0 +1,13 @@
+psycopg2-binary
+pathlib
+clerk_backend_api
+fastapi_mcp
+sqlalchemy
+sqlalchemy-libsql
+pymysql
+authlib
+itsdangerous
+jinja2
+openai-agents
+twilio
+sendgrid
